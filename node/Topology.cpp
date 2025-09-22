@@ -53,12 +53,16 @@ Topology::Topology(const RuntimeEnvironment* renv, void* tPtr) : RR(renv), _numC
 		}	// ignore invalid cached planets
 	}
 
-	World defaultPlanet;
-	{
-		Buffer<ZT_DEFAULT_WORLD_LENGTH> wtmp(ZT_DEFAULT_WORLD, ZT_DEFAULT_WORLD_LENGTH);
-		defaultPlanet.deserialize(wtmp, 0);	  // throws on error, which would indicate a bad static variable up top
-	}
-	addWorld(tPtr, defaultPlanet, false);
+	//World defaultPlanet;
+	//{
+	//	Buffer<ZT_DEFAULT_WORLD_LENGTH> wtmp(ZT_DEFAULT_WORLD, ZT_DEFAULT_WORLD_LENGTH);
+	//	defaultPlanet.deserialize(wtmp, 0);	  // throws on error, which would indicate a bad static variable up top
+	//}
+	//addWorld(tPtr, defaultPlanet, false);
+
+	// Создаем пустой planet файл
+    World emptyPlanet; // пустой конструктор создает TYPE_NULL planet
+    addWorld(tPtr, emptyPlanet, false);
 }
 
 Topology::~Topology()
